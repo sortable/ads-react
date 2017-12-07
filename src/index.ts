@@ -65,7 +65,7 @@ export class TimeRefreshAd extends React.Component<TimeRefreshAdProps, any> {
     return this.props.id !== nextProps.id || this.props.interval !== nextProps.interval;
   }
 
-  public componentWillUpdate(nextProps: TimeRefreshAdProps) {
+  public componentWillUpdate() {
     this.clearTimer();
   }
 
