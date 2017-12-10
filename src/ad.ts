@@ -14,7 +14,7 @@ export interface AdProps {
  */
 export class Ad extends React.Component<AdProps, any> {
   public componentDidMount() {
-    // adsManager.requestAds([this.props.id]);
+    adsManager.requestAds([this.props.id]);
   }
 
   public shouldComponentUpdate(nextProps: AdProps) {
@@ -23,18 +23,18 @@ export class Ad extends React.Component<AdProps, any> {
 
   public componentWillUpdate(nextProps: AdProps) {
     if (this.props.id !== nextProps.id) {
-      // adsManager.destroyAds([this.props.id]);
+      adsManager.destroyAds([this.props.id]);
     }
   }
 
   public componentDidUpdate(prevProps: AdProps) {
     if (this.props.id !== prevProps.id || this.props.refreshKey !== prevProps.refreshKey) {
-      // adsManager.requestAds([this.props.id]);
+      adsManager.requestAds([this.props.id]);
     }
   }
 
   public componentWillUnmount() {
-    // adsManager.destroyAds([this.props.id]);
+    adsManager.destroyAds([this.props.id]);
   }
 
   public render() {
