@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Ad } from './ad';
+import { Ad, AdProps } from './ad';
 
 export interface TimeRefreshAdProps {
   id: string;
