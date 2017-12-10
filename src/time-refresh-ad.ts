@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Ad, AdProps } from './ad';
+import { Ad } from './ad';
 
-export interface TimeRefreshAdProps extends AdProps {
+export interface TimeRefreshAdProps {
+  id: string;
   interval: number;
 }
 
