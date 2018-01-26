@@ -1,6 +1,6 @@
 {
   "name": "@sortable/react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -9,11 +9,11 @@
   "author": "sortable",
   "license": "MIT",
   "peerDependencies": {
-    "@sortable/ads": "0.0.1",
+    "@sortable/ads": "0.0.2",
     "react": "*"
   },
   "devDependencies": {
-    "@sortable/ads": "0.0.1",
+    "@sortable/ads": "0.0.2",
     "@types/react": "^16.0.27",
     "react": "^16.2.0",
     "typescript": "^2.6.2"
