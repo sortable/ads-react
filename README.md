@@ -1,6 +1,6 @@
 # Sortable Ads React Wrapper
 
-This repo exposes a thin wrapper which connects Sortable Ad Manager to a React Component.
+This repo exposes a thin wrapper which connects [Sortable Ad Manager](https://github.com/sortable/ads) to a React Component.
 
 ### Build
 
@@ -19,8 +19,4 @@ Open the example locally at examples/index.html.
 
 ### Dependencies
 
-A small note of what some of these dependencies are for:
-
-* Enzyme / Enzyme-adapter-react-16: test react components, lifecycle, hierarchy.
-* JSDom: required to mock the DOM on Node.JS, required by Enzyme's mount function
-* Sinon: test timer related code synchronously
+Note that @sortable/ads is a peer dependency. To ensure that the library works as intended, make sure that the version of this library matches the version of @sortable/ads.
