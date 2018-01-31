@@ -1,60 +1,46 @@
-import '@sortable/ads';
+import './config';
+
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {Ad, TimeRefreshAd} from '../src/index';
 
-interface Window {
-  googletag: any;
+interface TestPageState {
+  clicks: number;
 }
 
-declare var window: Window;
+class TestPage extends React.Component<any, TestPageState> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      clicks: 0,
+    };
 
-// setting script
-sortableads.setBidderTimeout(1000);
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-function registerGPT() {
-  sortableads.registerGPT({
-    init(cb) {
-      window.googletag = window.googletag || {};
-      window.googletag.cmd = window.googletag.cmd || [];
-      window.googletag.cmd.push(() => {
-        window.googletag.pubads().disableInitialLoad();
-        window.googletag.pubads().enableSingleRequest();
-        window.googletag.enableServices();
-        cb();
-      });
-    },
-    defineUnit(divId) {
-      if (divId === 'div-gpt-ad-1460505748561-0') {
-        return window.googletag.defineSlot('/19968336/header-bid-tag-0',
-          [[300, 250], [300, 600]], divId).addService(window.googletag.pubads());
-      } else if (divId === 'div-gpt-ad-1460505661639-0') {
-        return window.googletag.defineSlot('/19968336/header-bid-tag1',
-          [[728, 90], [970, 90]], divId).addService(window.googletag.pubads());
-      }
-    },
-    requestGPT(context) {
-      context.newIds.forEach((newIds) => {
-        window.googletag.display(newIds);
-      });
-      window.googletag.pubads().refresh(context.units);
-    },
-  });
-}
+  public handleClick(e: any) {
+    this.setState(prevState => ({
+      clicks: prevState.clicks + 1,
+    }));
+  }
 
-registerGPT();
-
-class TestPage extends React.Component {
   public render() {
     return (
       <div>
         <div>
           <h1>Regular Ad</h1>
-          <Ad id='div-gpt-ad-1460505748561-0'/>,
+          <Ad id='regular'/>,
+        </div>
+        <div>
+          <h1>Refresh Ad</h1>
+          <button onClick={e => this.handleClick(e)}>
+            Refresh Ad
+          </button>
+          <Ad id='refresh' refreshKey={this.state.clicks.toString()}/>,
         </div>
         <div>
           <h1>Time Refresh Ad</h1>
-          <TimeRefreshAd id='div-gpt-ad-1460505661639-0' interval={2} />
+          <TimeRefreshAd id='time-refresh' interval={2} />
         </div>
       </div>
     );

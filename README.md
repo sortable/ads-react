@@ -8,6 +8,8 @@ To build, you must have NodeJS and NPM installed on your environment.
 
 First, run `npm install` to install all the required dependencies.
 
+You should then see a warning about missing the @sortable/ads peerDependency. This is a dependency that you must install manually using `npm install @sortable/ads`. This is required as the version of @sortable/ads and @sortable/react must match for certain version subsets.
+
 Afterwards, the available commands to run are:
 
 * `npm run clean` - clean distributable artifacts
@@ -17,6 +19,6 @@ Afterwards, the available commands to run are:
 
 Open the example locally at examples/index.html.
 
-### Dependencies
+### Explicit Dependencies
 
-Note that @sortable/ads is a peer dependency. To ensure that the library works as intended, make sure that the version of this library matches the version of @sortable/ads.
+@sortable/ads is declared as a peer dependency. To ensure that this library works as intended, make sure that the version matches the version of @sortable/ads.
