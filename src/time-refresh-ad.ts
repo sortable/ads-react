@@ -19,7 +19,7 @@ export interface TimeRefreshAdState {
  * ^ Above example will refresh the ad every 30s automatically.
  */
 export class TimeRefreshAd extends React.Component<TimeRefreshAdProps, TimeRefreshAdState> {
-  private timer: number|null;
+  private timer: any;
 
   constructor(props: TimeRefreshAdProps) {
     super(props);
