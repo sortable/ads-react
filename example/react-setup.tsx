@@ -36,11 +36,11 @@ class TestPage extends React.Component<any, TestPageState> {
           <button onClick={e => this.handleClick(e)}>
             Refresh Ad
           </button>
-          <Ad id='refresh' refreshKey={this.state.clicks.toString()}/>,
+          <Ad id='refresh' refreshKey={this.state.clicks.toString()}/>
         </div>
         <div>
           <h1>Time Refresh Ad</h1>
-          <TimeRefreshAd id='time-refresh' interval={15} />
+          <TimeRefreshAd id='time-refresh' interval={15}/>
         </div>
       </div>
     );

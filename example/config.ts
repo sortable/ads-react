@@ -1,4 +1,4 @@
-declare var sortableads: any;
+import { sortableads } from '../src/util';
 
 // setting script
 sortableads.push(() => {
