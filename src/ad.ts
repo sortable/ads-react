@@ -1,14 +1,27 @@
 import * as React from 'react';
-
-declare var sortableads: any;
+import { sortableads } from './util';
 
 export interface AdProps {
   id: string;
   refreshKey?: string;
 }
 
-export interface AdState {
-  api: any;
+/**
+ * We have 4 states to keep track of whether or not we need to perform
+ * API calls based on how requests are queued before the API is ready.
+ *
+ * STATES:
+ * 1 = sortableads not loaded, no pending ad request
+ * 2 = sortableads not loaded, pending ad request
+ * 3 = sortableads loaded, no ads requested
+ * 4 = sortableads loaded, ads requested, the slot should be destroyed
+ * before refreshing
+ */
+enum STATES {
+  NOT_READY = 1,
+  NOT_READY_PENDING,
+  READY,
+  READY_REQUESTED,
 }
 
 /**
@@ -18,49 +31,60 @@ export interface AdState {
  *   <Ad id="div-id-1" />
  */
 export class Ad extends React.Component<AdProps, any> {
+  private requestState = STATES.NOT_READY;
+
   constructor(props: AdProps) {
-      super(props);
+    super(props);
 
-      this.state = {
-        api: [],
-      };
-  }
-
-  public componentDidMount() {
     sortableads.push(() => {
-      sortableads.requestAds([this.props.id]);
-      this.setState({
-        api: sortableads,
-      });
+      if (this.requestState === STATES.NOT_READY ) {
+        this.requestState = STATES.READY;
+      } else if (this.requestState === STATES.NOT_READY_PENDING) {
+        sortableads.requestAds([this.props.id]);
+        this.requestState = STATES.READY_REQUESTED;
+      }
     });
   }
 
-  public shouldComponentUpdate(nextProps: AdProps, nextState: AdState) {
-    return this.state.api !== nextState.api ||
-      this.props.id !== nextProps.id ||
-      this.props.refreshKey !== nextProps.refreshKey;
+  public componentDidMount() {
+    if (this.requestState === STATES.READY) {
+      sortableads.requestAds([this.props.id]);
+      this.requestState = STATES.READY_REQUESTED;
+    } else if (this.requestState === STATES.NOT_READY) {
+      this.requestState = STATES.NOT_READY_PENDING;
+    }
+  }
+
+  public shouldComponentUpdate(nextProps: AdProps) {
+    return this.props.id !== nextProps.id || this.props.refreshKey !== nextProps.refreshKey;
   }
 
   public componentWillUpdate(nextProps: AdProps) {
-    if (this.props.id !== nextProps.id) {
-      this.state.api.push(() => {
-        this.state.api.destroyAds([this.props.id]);
-      });
+    if (this.requestState === STATES.NOT_READY_PENDING) {
+      this.requestState = STATES.NOT_READY;
+    } else if (this.requestState === STATES.READY_REQUESTED) {
+      if (this.props.id !== nextProps.id) {
+        sortableads.destroyAds([this.props.id]);
+      }
+      this.requestState = STATES.READY;
     }
   }
 
   public componentDidUpdate(prevProps: AdProps) {
     if (this.props.id !== prevProps.id || this.props.refreshKey !== prevProps.refreshKey) {
-      this.state.api.push(() => {
-        this.state.api.requestAds([this.props.id]);
-      });
+      if (this.requestState === STATES.READY) {
+        sortableads.requestAds([this.props.id]);
+      } else if (this.requestState === STATES.NOT_READY) {
+        this.requestState = STATES.NOT_READY_PENDING;
+      }
     }
   }
 
   public componentWillUnmount() {
-    this.state.api.push(() => {
-      this.state.api.destroyAds([this.props.id]);
-    });
+    // the component will cease to exist after this fn ends, so don't need to track state anymore
+    if (this.requestState === STATES.READY_REQUESTED) {
+      sortableads.destroyAds([this.props.id]);
+    }
   }
 
   public render() {

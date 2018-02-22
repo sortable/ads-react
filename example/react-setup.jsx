@@ -4,12 +4,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {Ad, TimeRefreshAd} from '../src/index';
 
-interface TestPageState {
-  clicks: number;
-}
-
-class TestPage extends React.Component<any, TestPageState> {
-  constructor(props: any) {
+class TestPage extends React.Component {
+  constructor(props) {
     super(props);
     this.state = {
       clicks: 0,
@@ -18,13 +14,13 @@ class TestPage extends React.Component<any, TestPageState> {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  public handleClick(e: any) {
+  handleClick(e) {
     this.setState(prevState => ({
       clicks: prevState.clicks + 1,
     }));
   }
 
-  public render() {
+  render() {
     return (
       <div>
         <div>

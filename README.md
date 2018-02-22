@@ -24,7 +24,4 @@ Include the following in the head portion of your HTML document (ensuring sortab
 
 ```html
 <script src="link to ads manager script" async></script>
-<script>
-var sortableads = sortableads || [];
-</script>
 ```

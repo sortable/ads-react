@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './example/react-setup.tsx',
+  entry: './example/react-setup.jsx',
   module: {
     rules: [
       {
@@ -10,7 +10,7 @@ module.exports = {
         loader: 'tslint-loader'
       },
       {
-        test: /\.tsx?$/,
+        test: /\.[t,j]sx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'ts-loader',
@@ -22,7 +22,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   output: {
     path: path.resolve(__dirname, 'example'),
