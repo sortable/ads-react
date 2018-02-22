@@ -74,6 +74,7 @@ export class Ad extends React.Component<AdProps, any> {
     if (this.props.id !== prevProps.id || this.props.refreshKey !== prevProps.refreshKey) {
       if (this.requestState === STATES.READY) {
         sortableads.requestAds([this.props.id]);
+        this.requestState = STATES.READY_REQUESTED;
       } else if (this.requestState === STATES.NOT_READY) {
         this.requestState = STATES.NOT_READY_PENDING;
       }

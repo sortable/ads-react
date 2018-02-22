@@ -1,4 +1,8 @@
+// for testing, load the module before tests start to avoid async case
 import '@sortable/ads';
+// but access the API through the util function from ads-react
+import { sortableads } from './util'
+// then register JSDOM, so we can use enzyme
 import 'jsdom-global/register';
 import * as React from 'react';
 import * as Adapter from 'enzyme-adapter-react-16';
