@@ -37,7 +37,7 @@ export class Ad extends React.Component<AdProps, any> {
     super(props);
 
     sortableads.push(() => {
-      if (this.requestState === STATES.NOT_READY ) {
+      if (this.requestState === STATES.NOT_READY) {
         this.requestState = STATES.READY;
       } else if (this.requestState === STATES.NOT_READY_PENDING) {
         sortableads.requestAds([this.props.id]);
