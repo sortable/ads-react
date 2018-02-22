@@ -15,4 +15,6 @@ const getGlobal = (): any => {
 
 const GLOBAL = getGlobal();
 
+export const ADS_REACT_VERSION = '0.0.2';
+
 export const sortableads: any = GLOBAL.sortableads = GLOBAL.sortableads || [];
