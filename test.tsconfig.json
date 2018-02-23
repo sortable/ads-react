@@ -4,13 +4,13 @@
     "target": "es5",
     "lib": ["es2015", "dom"],
     "strict": true,
-    "declaration": true,
-    "sourceMap": false,
+    "declaration": false,
+    "sourceMap": true,
     "jsx": "react",
-    "outDir": "./dist"
+    "allowJs": true
   },
   "include": [
     "src/*.ts",
-    "src/*.tsx"
+    "example/*.jsx?"
   ]
 }
