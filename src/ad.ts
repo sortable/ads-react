@@ -82,9 +82,13 @@ export class Ad extends React.Component<AdProps, any> {
   }
 
   public componentWillUnmount() {
-    // the component will cease to exist after this fn ends, so don't need to track state anymore
     if (this.requestState === STATES.READY_REQUESTED) {
+    // the component will cease to exist after this fn ends, so don't need to track state anymore
       sortableads.destroyAds([this.props.id]);
+    } else if (this.requestState === STATES.NOT_READY_PENDING) {
+      // but if the api isn't ready, we need to guard against
+      // componentDidMount -> componentWillUnmount -> sortableads ready -> unneeded requestAds!
+      this.requestState = STATES.NOT_READY;
     }
   }
 
