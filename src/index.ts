@@ -8,3 +8,4 @@ sortableads.push(() => {
 
 export { Ad, AdProps } from './ad';
 export { TimeRefreshAd, TimeRefreshAdProps } from './time-refresh-ad';
+export { sortableads } from './util';

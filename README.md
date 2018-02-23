@@ -25,3 +25,6 @@ Include the following in the head portion of your HTML document (ensuring sortab
 ```html
 <script src="link to ads manager script" async></script>
 ```
+
+**NOTE**
+The sortableads global variable is exposed from ads-react so that the user does not have to define the variable, but this does not refer to the NPM module @sortable/ads. The ads manager script must be included as an external script in order for the API to be loaded asynchronously, and callbacks should be used for API calls.
