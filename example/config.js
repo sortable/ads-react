@@ -1,4 +1,4 @@
-import { sortableads } from '../src/util';
+import { sortableads } from '@sortable/ads-react';
 
 // setting script
 sortableads.push(() => {

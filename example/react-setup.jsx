@@ -2,7 +2,7 @@ import './config';
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {Ad, TimeRefreshAd} from '../src/index';
+import {Ad, TimeRefreshAd} from '@sortable/ads-react';
 
 class TestPage extends React.Component {
   constructor(props) {
