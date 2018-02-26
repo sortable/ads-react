@@ -2,12 +2,12 @@
   "name": "@sortable/ads-react",
   "version": "0.0.5",
   "description": "",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "npm run build && nyc mocha -r ts-node/register src/**/*.test.tsx",
     "build": "tsc",
-    "build-example": "webpack",
-    "clean": "rm -rf dist example/bundle.js"
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run build"
   },
   "nyc": {
     "extension": [
@@ -45,11 +45,8 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "sinon": "^4.2.1",
-    "ts-loader": "^3.2.0",
     "ts-node": "^4.1.0",
     "tslint": "^5.9.1",
-    "tslint-loader": "^3.5.3",
-    "typescript": "^2.6.2",
-    "webpack": "^3.10.0"
+    "typescript": "^2.6.2"
   }
 }
