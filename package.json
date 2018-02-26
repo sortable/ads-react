@@ -2,6 +2,10 @@
   "name": "@sortable/ads-react",
   "version": "0.0.5",
   "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sortable/ads-react.git"
+  },
   "main": "dist/index.js",
   "scripts": {
     "test": "npm run build && nyc mocha -r ts-node/register src/**/*.test.tsx",
@@ -23,7 +27,7 @@
   "author": "sortable",
   "license": "MIT",
   "peerDependencies": {
-    "react": "*"
+    "react": "0.14.0 - 16.x"
   },
   "devDependencies": {
     "@sortable/ads": "0.0.5",
