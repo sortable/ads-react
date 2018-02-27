@@ -2,7 +2,7 @@ import { sortableads } from '@sortable/ads-react';
 
 // setting script
 sortableads.push(() => {
-  sortableads.set('bidderTimeout', 1000);
+  sortableads.useGPTAsync();
 
   sortableads.defineAds([
     {
@@ -28,6 +28,5 @@ sortableads.push(() => {
     },
   ]);
 
-  sortableads.useGPTAsync();
   sortableads.start();
 });

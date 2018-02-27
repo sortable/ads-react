@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './react-setup.jsx',
+  entry: './app.jsx',
   module: {
     rules: [
       {

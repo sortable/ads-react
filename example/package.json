@@ -4,13 +4,15 @@
   "description": "",
   "scripts": {
     "build": "webpack",
-    "clean": "rm -rf bundle.js"
+    "clean": "rm -rf bundle.js",
+    "serve": "npm run build && http-server ."
   },
   "author": "sortable",
   "license": "MIT",
   "dependencies": {
     "@sortable/ads": "0.0.5",
     "@sortable/ads-react": "0.0.6",
+    "http-server": "^0.11.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
