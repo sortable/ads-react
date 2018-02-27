@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {Ad, TimeRefreshAd} from '@sortable/ads-react';
 
-class TestPage extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -44,6 +44,6 @@ class TestPage extends React.Component {
 }
 
 ReactDOM.render(
-  <TestPage/>,
+  <App/>,
   document.getElementById('root'),
 );
