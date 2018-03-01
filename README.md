@@ -6,6 +6,8 @@ This repo exposes a thin wrapper which connects [Sortable Ad Manager](https://gi
 
 Detailed guide, API reference and examples are available at [dev.sortable.com/ads](http://dev.sortable.com/ads).
 
+> **NOTE**: You may need to **disable** AdBlock or similar extensions to view documentation properly due to domain "sortable.com" or repo name "ads".
+
 ### Build
 
 First, run `npm install` to install all the required dependencies.
